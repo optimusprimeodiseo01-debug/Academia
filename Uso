@@ -1,0 +1,3 @@
+Nodo = f(estado) -> nuevo_estado
+
+DAG = composicion ordenada de nodos
