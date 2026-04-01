@@ -1,0 +1,16 @@
+// nodes/validacion.js
+module.exports = async (state) => {
+
+  if (!state.token_valido) {
+    return { error: "token invalido" };
+  }
+
+  if (Date.now() > state.exp) {
+    return { error: "token expirado" };
+  }
+
+  return {
+    ...state,
+    validado: true
+  };
+};
