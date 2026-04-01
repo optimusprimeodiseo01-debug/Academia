@@ -1,0 +1,33 @@
+// runner/dag_runner.js
+const config = require("./config");
+
+const nodes = {
+  identidad_base: require("./nodes/identidad_base"),
+  github_auth: require("./nodes/github_auth"),
+  validacion: require("./nodes/validacion"),
+  oracle: require("./nodes/oracle"),
+  contrato: require("./nodes/contrato"),
+};
+
+async function run(initialState) {
+  let state = { ...initialState };
+
+  for (const step of config.dag) {
+    const nodo = nodes[step];
+
+    if (!nodo) throw new Error(`Nodo no encontrado: ${step}`);
+
+    console.log(`\n[RUN] -> ${step}`);
+
+    state = await nodo(state);
+
+    if (state.error) {
+      console.log(`[ERROR] en ${step}:`, state.error);
+      break;
+    }
+  }
+
+  return state;
+}
+
+module.exports = { run };
