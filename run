@@ -1,0 +1,10 @@
+// runner/config.js
+module.exports = {
+  dag: [
+    "identidad_base",
+    "github_auth",
+    "validacion",
+    "oracle",
+    "contrato"
+  ]
+};
