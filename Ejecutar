@@ -1,0 +1,19 @@
+INPUT
+  |
+  v
+[IDENTIDAD_BASE]
+  |
+  v
+[GITHUB_AUTH]
+  |     (T = U ∩ A)
+  v
+[VALIDACION]
+  |
+  v
+[ORACLE]
+  |     (firma)
+  v
+[CONTRATO]
+  |
+  v
+OUTPUT (acceso_onchain)
