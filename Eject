@@ -1,0 +1,11 @@
+// run.js
+const { run } = require("./runner/dag_runner");
+
+(async () => {
+  const result = await run({
+    user: "0xUSER_ADDRESS",
+    github_token: "ghu_xxx"
+  });
+
+  console.log("\nRESULTADO FINAL:\n", result);
+})();
