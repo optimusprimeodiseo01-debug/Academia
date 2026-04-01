@@ -1,0 +1,25 @@
+// nodes/oracle.js
+const { ethers } = require("ethers");
+
+// clave privada del oracle (local)
+const PRIVATE_KEY = "0xTU_CLAVE";
+
+const wallet = new ethers.Wallet(PRIVATE_KEY);
+
+module.exports = async (state) => {
+
+  const payload = ethers.utils.solidityKeccak256(
+    ["address", "uint256", "uint256"],
+    [state.user, state.exp, state.nonce]
+  );
+
+  const firma = await wallet.signMessage(
+    ethers.utils.arrayify(payload)
+  );
+
+  return {
+    ...state,
+    firma,
+    payload
+  };
+};
