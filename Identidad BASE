@@ -1,0 +1,12 @@
+// nodes/identidad_base.js
+module.exports = async (state) => {
+  if (!state.user) {
+    return { error: "usuario no definido" };
+  }
+
+  return {
+    ...state,
+    identidad_ok: true,
+    nonce: Date.now()
+  };
+};
